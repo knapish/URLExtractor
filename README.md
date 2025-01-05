@@ -9,41 +9,27 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/knapish/urlextractor"
 )
 
 func main() {
-	testInputs := []string{
-		"https://user:pass@test.www.example.com:444/example/path?query=data#fragment",
-		"http://ö.exaomple.com:80/path",
-		"http://xn--nda.test.example.com:81",
-		"www.example.com",
-		"_valid.example.com",
-		"x.com",
-		"xcom",
-		"-invalid.example.com",
-		"invalid._example.com",
-		"invalid",	
-	}
-
-	for _, testInput := range testInputs {
-		fmt.Println("Input:", testInput)
-		url, err := urlextractor.Extract(testInput)
-		if err != nil {
-			fmt.Println("Error:", err)
-		} else {
-			fmt.Println("Scheme:", url.Scheme)
-			fmt.Println("UserInfo:", url.UserInfo)
-			fmt.Println("Subdomain:", url.SubDomain)
-			fmt.Println("Apex:", url.ApexDomain)
-			fmt.Println("TLD:", url.TLD)
-			fmt.Println("Port:", url.Port)
-			fmt.Println("Path:", url.Path)
-			fmt.Println("Query:", url.Query)
-			fmt.Println("Fragment:", url.Fragment)
-		}
-		fmt.Println()
+	testInput := os.Args[1]
+	fmt.Println("Input:", testInput)
+	url, err := urlextractor.Extract(testInput)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Scheme:", url.Scheme)
+		fmt.Println("UserInfo:", url.UserInfo)
+		fmt.Println("Subdomain:", url.SubDomain)
+		fmt.Println("Apex:", url.ApexDomain)
+		fmt.Println("TLD:", url.TLD)
+		fmt.Println("Port:", url.Port)
+		fmt.Println("Path:", url.Path)
+		fmt.Println("Query:", url.Query)
+		fmt.Println("Fragment:", url.Fragment)
 	}
 }
 ```
@@ -112,6 +98,7 @@ Path:
 Query: 
 Fragment: 
 ```
+
 ### Input: `x.com`
 ```
 Scheme: 
@@ -143,5 +130,15 @@ Error: invalid domain - invalid apex domain: _example
 ### Input: `invalid`
 ```
 Error: invalid domain - missing TLD in string: invalid
+```
 
+### Input: `ööö`
+```
+Error: invalid domain - missing TLD in string: invalid
+```
+
+### Input: `example.example`
+```
+Input: example.example
+Error: invalid domain - missing valid TLD in string: example.example
 ```
