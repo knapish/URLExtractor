@@ -1,6 +1,11 @@
 # URLExtractor
  A Go library for extracting and parsing URL components.
 
+ Returns result only if valid ICANN TLD.
+
+ a-z0-9\-\_
+
+ 
 
 ## Usage
 

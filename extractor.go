@@ -22,8 +22,8 @@ type url struct {
 	Fragment   string
 }
 
-var apexDomainRegex = `^([a-z0-9]{1})([a-z0-9\-]{0,60})([a-z0-9]{0,1})$`
-var subDomainRegex = `^([a-z0-9\_]{1})([a-z0-9\-]{0,60})([a-z0-9]{0,1})$`
+var apexDomainRegex = `^([a-z0-9]{1})([a-z0-9\-]{0,61})([a-z0-9]{0,1})$`
+var subDomainRegex = `^([a-z0-9\-\_]{1})([a-z0-9\-\_]{0,61})([a-z0-9\-]{0,1})$`
 
 func getScheme(s string) (string, string) {
 	if strings.Contains(s, "://") {
