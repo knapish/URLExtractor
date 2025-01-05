@@ -122,11 +122,6 @@ Fragment:
 Error: invalid domain - missing TLD in string: xcom
 ```
 
-### Input: `-invalid.example.com`
-```
-Error: invalid domain - invalid sub domain: -invalid
-```
-
 ### Input: `invalid._example.com`
 ```
 Error: invalid domain - invalid apex domain: _example
