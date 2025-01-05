@@ -47,12 +47,12 @@ Query: query=data
 Fragment: fragment
 ```
 
-### Input: `http://ö.exaomple.com:80/path`
+### Input: `http://ö.example.com:80/path`
 ```
 Scheme: http
 UserInfo: 
 Subdomain: xn--nda
-Apex: exaomple
+Apex: example
 TLD: com
 Port: 80
 Path: /path
